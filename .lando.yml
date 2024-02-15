@@ -1,0 +1,35 @@
+name: wpd
+recipe: pantheon
+config:
+  framework: wordpress
+  site: wp-starter-drop
+  id: c0357cae-8a2f-4000-907c-048cbe8259ac
+  edge: false
+  #cache: false
+services:
+  pma:
+    type: phpmyadmin
+    hosts:
+      - database
+proxy:
+  pma:
+    - pma-wpd.lndo.site
+tooling:
+  push:
+    description: Push only database to dev
+    options:
+      code:
+        default: none
+      files:
+        default: none
+      database:
+        default: dev
+  pull:
+    description: Pull only database
+    options:
+      code:
+        default: none
+      files:
+        default: none
+      database:
+        default: live
